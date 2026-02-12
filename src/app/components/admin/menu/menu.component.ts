@@ -11,12 +11,12 @@ import firebase from 'firebase/app';
 })
 export class MenuComponent implements OnInit {
 
-  user: Observable<firebase.User | null>;
+  user: Observable<firebase.User>;
 
   constructor(private authServ: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
-    this.user = this.authServ.user;
+    this.user = this.authServ.authUser();
   }
 
   sair() {
