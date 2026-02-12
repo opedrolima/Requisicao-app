@@ -7,12 +7,13 @@ import firebase from "firebase";
 export const environment = {
   production: false, 
   firebase: {
-    apiKey: "AIzaSyCng_cba2SpK1MVIl478IUInfE5v2UvIxU",
-    authDomain:"requisicoes-app.firebaseapp.com",
-    databaseURL:"https://requisicoes-app.firebaseio.com",
-    projectId:"requisicoes-app",
-    storageBucket:"requisicoes-app.appspot.com",
-    messagingSenderId: "192989744894"
+apiKey: "AIzaSyCA5AhyrgWiO2rnomb6olYqXSe27n3ShxY",
+  authDomain: "requisicoes-app-89c79.firebaseapp.com",
+  projectId: "requisicoes-app-89c79",
+  storageBucket: "requisicoes-app-89c79.firebasestorage.app",
+  messagingSenderId: "1021635128306",
+  appId: "1:1021635128306:web:96798a3191a5e404e5196b",
+  measurementId: "G-KKWY0DHCPN"
   }
 };
 

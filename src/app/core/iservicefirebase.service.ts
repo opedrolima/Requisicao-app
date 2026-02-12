@@ -23,7 +23,7 @@ export abstract class ServiceFirebase<T extends Model> implements ICrud<T> {
     return this.ref.valueChanges()
   }
 
-    createOrUpdate(item: T): Promise<any> {
+  createOrUpdate(item: T): Promise<any> {
     let id = item.id;
     if (!item)
       return
@@ -37,9 +37,10 @@ export abstract class ServiceFirebase<T extends Model> implements ICrud<T> {
       return this.ref.doc(id).set(obj);
     }
     else
-      const res = await this.ref.add(obj);
+      return this.ref.add(obj).then(res => {
         obj.id = res.id; 
         this.ref.doc(res.id).set(obj);
+      })
   }
 
   delete(id: string):Promise<void> {

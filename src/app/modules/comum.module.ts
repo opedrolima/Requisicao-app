@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PrimeNGModule } from './primeng.modules';
-
+import { PrimeNGModule } from './prime-ng.module';
 @NgModule({
   imports: [
     CommonModule,
