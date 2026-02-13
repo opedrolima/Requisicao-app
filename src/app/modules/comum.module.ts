@@ -6,6 +6,7 @@ import { PrimeNGModule } from './prime-ng.module';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     PrimeNGModule
   ],
   exports:[

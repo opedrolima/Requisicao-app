@@ -26,7 +26,7 @@ export abstract class ServiceFirebase<T extends Model> implements ICrud<T> {
   createOrUpdate(item: T): Promise<any> {
     let id = item.id;
     if (!item)
-      return
+      return 
     let obj = null;
 
     if (item instanceof this.type)
@@ -38,7 +38,7 @@ export abstract class ServiceFirebase<T extends Model> implements ICrud<T> {
     }
     else
       return this.ref.add(obj).then(res => {
-        obj.id = res.id; 
+        obj.id = res.id; // Para salvar com o atributo id
         this.ref.doc(res.id).set(obj);
       })
   }

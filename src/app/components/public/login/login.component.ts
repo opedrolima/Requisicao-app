@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-login',
@@ -14,12 +14,12 @@ export class LoginComponent implements OnInit {
   senha: string;
   mensagem: string;
   emailEnviado: boolean;
-
-  constructor(private authServ:AuthenticationService,private router:Router) { }
+  constructor(private authServ: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
-  
+
   }
+
   logar() {
     try {
       if (this.email == undefined ||
@@ -55,26 +55,26 @@ export class LoginComponent implements OnInit {
         });
     } catch (erro) {
       this.mensagem = `Erro ao logar. Detalhes: ${erro}`;
-    }  
+    }
+
   }
 
-  async enviaLink(){
+  async enviaLink() {
     const { value: email } = await Swal.fire({
-      title: 'informe o email cadastrado',
+      title: 'Informe o email cadastrado',
       input: 'email',
-      inputPlaceholder: 'Digite seu email'
+      inputPlaceholder: 'email'
     })
     if (email) {
-      this.authServ.resetPassword(email).then(()=>{
-        this.emailEnviado = true;
-        this.mensagem =`Email enviado para ${email} com instruções para recuperação`
-      })
-      .catch(erro=>{
-        this.mensagem = `Erro ao enviar email. Detalhes: ${erro.message}`;
-})
+      this.authServ.resetPassword(email)
+        .then(() => {
+          this.emailEnviado = true;
+          this.mensagem = `Email enviado para ${email} com instruções para recuperação.`
+        })
+        .catch(erro => {
+          this.mensagem = `Erro ao localizar o email. Detahes ${erro.message}`
+        })
+    }
   }
 
-
-
-
-}}
+}

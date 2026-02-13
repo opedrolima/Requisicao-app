@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
 import { DepartamentoComponent } from './departamento.component';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  {path: '', component: DepartamentoComponent}
+  { path: '', component: DepartamentoComponent }
 ];
 
 @NgModule({
