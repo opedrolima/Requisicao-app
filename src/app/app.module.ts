@@ -1,13 +1,12 @@
-import { MenuComponent } from './components/admin/menu/menu.component';
-// Core Angular
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { DialogModule } from 'primeng/dialog';
-// Formulário
-import { FormsModule } from '@angular/forms';
+import { MenuComponent } from './components/admin/menu/menu.component';
+import { LoginComponent } from './components/public/login/login.component';
 
 // Firebase
 import { AngularFireModule } from '@angular/fire';
@@ -15,30 +14,26 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
-//Components sem Lazy
-import { LoginComponent } from './components/public/login/login.component';
+
+// Pipe
 import { FilterDepartamentoPipe } from './pipes/filter-departamento.pipe';
-
-
-
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MenuComponent,
-    FilterDepartamentoPipe
+    MenuComponent
   ],
   imports: [
-    DialogModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,    
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-    AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
-    AngularFireStorageModule // imports firebase/storage only needed for storage features
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,12 +5,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterDepartamentoPipe implements PipeTransform {
 
-  transform(value: any, filtro: any): any {
-    if (filtro == 'TODOSS') return value;
-    if(value){
-      return value.filter(elem => (elem.departamento.nome === filtro))
-    }
-    
+  transform(value: any[], filtro: any): any[] {
+    if (!value) return [];
+    if (filtro =='TODOS') return value;
+    if (value){
+      return value.filter(elem =>(elem.departamento?.nome === filtro))}
   }
 
 }

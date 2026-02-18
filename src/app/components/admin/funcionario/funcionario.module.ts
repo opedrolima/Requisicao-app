@@ -1,19 +1,17 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ComumModule } from 'src/app/modules/comum.module';
-import { NgSelectModule } from '@ng-select/ng-select';
-
+import { SharedModule } from 'src/app/modules/shared/shared.module';
 import { FuncionarioRoutingModule } from './funcionario-routing.module';
 import { FuncionarioComponent } from './funcionario.component';
-
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
-  declarations: [FuncionarioComponent],
+  declarations: [
+    FuncionarioComponent
+  ],
   imports: [
-    ComumModule,
-    NgSelectModule,
-    CommonModule,
-    FuncionarioRoutingModule
+    SharedModule,
+    FuncionarioRoutingModule,
+    NgSelectModule
   ]
 })
 export class FuncionarioModule { }

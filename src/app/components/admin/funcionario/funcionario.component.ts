@@ -1,4 +1,6 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AngularFireUploadTask } from '@angular/fire/storage';
+import { AngularFireStorage } from '@angular/fire/storage';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Departamento } from 'src/app/models/departamento.model';
@@ -6,7 +8,6 @@ import { Funcionario } from 'src/app/models/funcionario.model';
 import { DepartamentoService } from 'src/app/services/departamento.service';
 import { FuncionarioService } from 'src/app/services/funcionario.service';
 import Swal from 'sweetalert2';
-import { AngularFireUploadTask, AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-funcionario',
@@ -19,33 +20,43 @@ export class FuncionarioComponent implements OnInit {
   departamentos$: Observable<Departamento[]>;
   departamentoFiltro: string;
   edit: boolean;
-  displayDialogFuncionario: boolean;
+  displayDialogFuncionario: boolean
   form: FormGroup;
 
+    @ViewChild('inputFile', { static: false }) inputFile: ElementRef;
+  uploadPercent: Observable<number>;
+  downloadURL: Observable<string>;
+  task: AngularFireUploadTask;
+  complete: boolean;
 
-  constructor(private funcionarioService: FuncionarioService, private departamentoService: DepartamentoService, private fb: FormBuilder) { }
+
+  constructor(private funcionarioService: FuncionarioService,private departamentoService: DepartamentoService, private fb: FormBuilder,private storage: AngularFireStorage) { 
+
+
+  }
 
   ngOnInit() {
-    
-    this.funcionarios$= this.funcionarioService.list();
-    this.departamentos$= this.departamentoService.list();
+
+    this.funcionarios$ = this.funcionarioService.list();
+    this.departamentos$ = this.departamentoService.list();
     this.departamentoFiltro = 'TODOS';
     this.configForm();
 
-  
   }
+
 
   configForm() {
     this.form = this.fb.group({
       id: new FormControl(),
-      nome: new FormControl('', Validators.required),
-      email: new FormControl('',[Validators.required, Validators.email]),
+      nome: new FormControl('',Validators.required),
+      email: new FormControl('',[Validators.required,Validators.email]),
       funcao: new FormControl(''),
-      departamentoId: new FormControl('', Validators.required)
-    
+      departamento: new FormControl('',Validators.required),
+      foto: new FormControl('')
     })
   }
-    add() {
+
+   add() {
     this.form.reset();
     this.edit = false;
     this.displayDialogFuncionario = true;
@@ -87,6 +98,25 @@ export class FuncionarioComponent implements OnInit {
           })
       }
     })
+  }
+
+  async upload(event) {
+    this.complete = false;
+    const file = event.target.files[0];
+    const path = `funcionarios/${new Date().getTime().toString()}`;
+    const fileRef = this.storage.ref(path);
+    this.task = this.storage.upload(path, file);
+    this.task.then(up => {
+      fileRef.getDownloadURL().subscribe(url => {
+        this.complete = true;
+        this.form.patchValue({
+          foto: url
+        })
+      });
+    });
+    this.uploadPercent = this.task.percentageChanges();
+    this.inputFile.nativeElement.value = '';
+
   }
 
 }
