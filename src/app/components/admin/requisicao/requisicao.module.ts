@@ -6,6 +6,8 @@ import { RequisicaoComponent } from './requisicao.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { DialogModule } from 'primeng/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MovimentacaoModule } from '../movimentacao/movimentacao.module';
+import { ListaModule } from '../movimentacao/lista/lista.module';
 
 @NgModule({
   declarations: [RequisicaoComponent],
@@ -13,7 +15,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     RequisicaoRoutingModule,
     NgSelectModule,
-    DialogModule,ReactiveFormsModule
+    DialogModule,
+    ReactiveFormsModule,
+    MovimentacaoModule,
+    ListaModule
+  
   ]
 })
 export class RequisicaoModule { }
