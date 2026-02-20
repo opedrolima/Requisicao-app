@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { RequisicaoComponent } from './requisicao.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', component: RequisicaoComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

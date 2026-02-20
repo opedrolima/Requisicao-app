@@ -1,0 +1,10 @@
+label {
+  font-weight: bold;
+}
+
+.btn {
+  margin: 5px;
+}
+.badge-secondary {
+  color: #424242;   /* deixa o número preto */
+}

@@ -17,6 +17,7 @@ import { environment } from 'src/environments/environment';
 
 // Pipe
 import { FilterDepartamentoPipe } from './pipes/filter-departamento.pipe';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { FilterDepartamentoPipe } from './pipes/filter-departamento.pipe';
   ],
   imports: [
     BrowserModule,
+    DialogModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,

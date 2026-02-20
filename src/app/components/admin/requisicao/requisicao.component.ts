@@ -19,24 +19,28 @@ import Swal from 'sweetalert2';
 export class RequisicaoComponent implements OnInit {
 
   requisicoes$: Observable<Requisicao[]>;
-  departamentos$: Observable<Departamento[]>;
+  departamentos$: Observable<Departamento[]>
   edit: boolean;
   displayDialogRequisicao: boolean;
   form: FormGroup;
   funcionarioLogado: Funcionario;
 
-  constructor(private requisicaoService: RequisicaoService, private departamentoService: DepartamentoService, 
-    private auth: AuthenticationService, private funcionarioService: FuncionarioService, private fb: FormBuilder) { }
+  constructor(
+    private requisicaoService: RequisicaoService,
+    private departamentoService: DepartamentoService,
+    private funcionarioService: FuncionarioService,
+    private auth: AuthenticationService,
+    private fb: FormBuilder
+
+  ) { }
 
   ngOnInit() {
-
-    this.departamentos$ = this.departamentoService.list();
+     this.departamentos$ = this.departamentoService.list();
     this.configForm();
-    this.recuperaFuncionario();
-
+    this.recuperaFuncionario()
+  
 
   }
-
   async recuperaFuncionario() {
     await this.auth.authUser()
       .subscribe(dados => {
@@ -53,31 +57,26 @@ export class RequisicaoComponent implements OnInit {
   }
 
   configForm() {
-
-      this.form = this.fb.group({
-        
-        id: new FormControl(),
-        destino: new FormControl('',Validators.required),
-        solicitante: new FormControl(''),
-        dataAbertura: new FormControl(''),
-        ultimaAtualizacao: new FormControl(''),
-        status: new FormControl(''),
-        descricao: new FormControl('',Validators.required)
-
-      })
+    this.form = this.fb.group({
+      id: new FormControl(),
+      destino: new FormControl('', Validators.required),
+      solicitante: new FormControl(''),
+      dataAbertura: new FormControl(''),
+      ultimaAtualizacao: new FormControl(''),
+      status: new FormControl(''),
+      descricao: new FormControl('', Validators.required),
+      movimentacoes: new FormControl('')
+    })
   }
 
   add() {
-    
     this.form.reset();
     this.edit = false;
     this.displayDialogRequisicao = true;
-    this.setValoresPadrao();
-
+    this.setValorPadrao();
   }
 
-  setValoresPadrao() {
-
+  setValorPadrao() {
     this.form.patchValue({
       solicitante: this.funcionarioLogado,
       status: 'Aberto',
@@ -87,25 +86,29 @@ export class RequisicaoComponent implements OnInit {
     })
   }
 
-  save() {
+  selecionaRequisicao(func: Requisicao) {
+    this.edit = true;
+    this.displayDialogRequisicao = true;
+    this.form.setValue(func);
+  }
 
+  save() {
     this.requisicaoService.createOrUpdate(this.form.value)
       .then(() => {
         this.displayDialogRequisicao = false;
-        Swal.fire(`Requisição ${!this.edit ? 'salva' : 'atualizada'} com sucesso.`, '', 'success')
+        Swal.fire(`Requisição ${!this.edit ? 'salvo' : 'atualizado'} com sucesso.`, '', 'success')
         this.displayDialogRequisicao = false;
       })
       .catch((erro) => {
-        this.displayDialogRequisicao = false;
-        Swal.fire(`Erro ao ${!this.edit ? 'salvar' : 'atualizar'} a requisição.`, `Detalhes: ${erro}`, 'error')
+        this.displayDialogRequisicao = true;
+        Swal.fire(`Erro ao ${!this.edit ? 'salvo' : 'atualizado'} o Requisição.`, `Detalhes: ${erro}`, 'error')
       })
-      this.form.reset()
+    this.form.reset()
   }
 
   delete(depto: Requisicao) {
-
     Swal.fire({
-      title: 'Confirma a exclusão da requisição?',
+      title: 'Confirma a exclusão do Requisição?',
       text: "",
       icon: 'warning',
       showCancelButton: true,
@@ -115,11 +118,13 @@ export class RequisicaoComponent implements OnInit {
       if (result.value) {
         this.requisicaoService.delete(depto.id)
           .then(() => {
-            Swal.fire('Requisição excluída com sucesso!', '', 'success')
+            Swal.fire('Requisição excluído com sucesso!', '', 'success')
           })
       }
-  })
+    })
+  }
+
+  
   }
   
 
-}
