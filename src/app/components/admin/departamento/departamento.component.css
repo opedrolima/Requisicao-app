@@ -5,4 +5,99 @@ label {
 .btn {
     margin: 5px;
 }
+.btn-add {
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 8px 16px;
 
+  transition: transform .12s ease,
+              box-shadow .12s ease,
+              filter .12s ease;
+}
+
+.btn-add:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+}
+
+
+
+.card {
+  border: none;
+  border-radius: 14px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+}
+
+.departamentos-header {
+  background: #f8f9fb;
+  border-bottom: 1px solid #e5e9ef;
+  padding: 20px 24px;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  margin: 0;
+  font-weight: 600;
+}
+
+
+.table {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.table thead {
+  background: #2c3e50;
+  color: #fff;
+}
+
+.table td, .table th {
+  vertical-align: middle;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f4f6f9;
+}
+
+.table .btn {
+  border-radius: 8px;
+  padding: 6px 10px;
+
+  transition: transform .12s ease,
+              box-shadow .12s ease,
+              filter .12s ease;
+}
+
+.table .btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.text-center .btn-primary {
+  margin-top: 20px;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-weight: 600;
+}
+
+p-dialog .p-dialog {
+  border-radius: 14px !important;
+  overflow: hidden;
+}
+
+p-dialog .p-dialog-header {
+  background: #f8f9fb;
+  border-bottom: 1px solid #e5e9ef;
+  font-weight: 600;
+}
+
+p-dialog .p-dialog-content {
+  padding: 2rem !important;
+}

@@ -1,14 +1,19 @@
 <div class="col col-lg-12 col-centered">
 
   <div class="card col-lg-12 bg-light col-centered">
-    <div class="card-header">
-      <h3> Minhas Requisições
-        <button type="button" style="margin-right: 0px" (click)="add()" class="text-right btn btn-outline-info btn-lg">
-          <i class="fa fa-plus-circle" aria-hidden="true"></i>
-        </button>
-      </h3>
+<div class="card-header requisicoes-header">
 
-    </div>
+  <div class="header-top">
+    <h3 class="title">Minhas Requisições</h3>
+
+    <button type="button"
+            (click)="add()"
+            class="btn btn-primary btn-add">
+      <i class="fa fa-plus-circle me-1"></i> Nova
+    </button>
+  </div>
+
+</div>
     <div class="card-body col-lg-12 col-centered">
       <table class="table table-striped table-hover table-bordered col-centered">
         <thead class="thead-dark">
