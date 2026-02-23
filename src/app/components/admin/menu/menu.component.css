@@ -1,0 +1,67 @@
+/* Customização da Navbar */
+.navbar {
+  padding: 0.8rem 2rem; /* Aumenta a altura e o respiro lateral */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Sombra suave para dar profundidade */
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.3s ease;
+}
+
+/* Logo / Brand */
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand i {
+  margin-right: 10px;
+  font-size: 1.6rem;
+}
+
+/* Itens do Menu (Links) */
+.nav-item {
+  margin: 0 5px; /* Espaçamento entre os botões */
+}
+
+.nav-link {
+  font-weight: 500;
+  font-size: 1.05rem;
+  padding: 0.6rem 1.2rem !important;
+  border-radius: 8px; /* Transforma o link em um botão suave */
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+}
+
+.nav-link i {
+  margin-right: 8px;
+  opacity: 0.8;
+}
+
+/* Efeito Hover nos Botões do Menu */
+.nav-item:not(.active) .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+/* Estilo para o Botão Ativo */
+.nav-item.active .nav-link {
+  background-color: rgba(255, 255, 255, 0.25);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Botão SAIR (Destaque) */
+.navbar-nav.ml-auto .nav-link {
+  color: #ffcccc !important; /* Tom avermelhado suave para alerta */
+  font-weight: 600;
+  border: 1px solid rgba(255, 204, 204, 0.3);
+  margin-left: 15px;
+}
+
+.navbar-nav.ml-auto .nav-link:hover {
+  background-color: #e74c3c !important;
+  color: #fff !important;
+  border-color: #e74c3c;
+}

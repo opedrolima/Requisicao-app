@@ -14,3 +14,35 @@
 .btn {
   margin: 5px;
 }
+
+/* Garante que o textarea use 100% da largura da coluna */
+textarea[pInputTextarea] {
+    width: 100% !important;
+    border-radius: 8px;
+    border: 1px solid #dfe3e8;
+    padding: 12px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical; /* Impede que o usuário quebre o layout puxando para o lado */
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+/* Estilo de foco para combinar com os outros inputs */
+textarea[pInputTextarea]:focus {
+    outline: none;
+    border-color: #2c3e50;
+    box-shadow: 0 0 0 0.15rem rgba(44, 62, 80, 0.15);
+}
+
+/* Ajuste específico para quando o label está acima (padrão p-fluid) */
+.ui-grid-col-8 {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo para o campo de Solicitação que está desabilitado */
+textarea[pInputTextarea]:disabled {
+    background-color: #f9f9f9;
+    border-style: dashed;
+    color: #777;
+}

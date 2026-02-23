@@ -110,3 +110,26 @@ p-dialog .p-dialog-header {
 p-dialog .p-dialog-content {
   padding: 2rem !important;
 }
+
+/* Estilização da caixa de descrição */
+textarea[pInputTextarea] {
+  width: 100% !important; /* Faz ocupar toda a largura da modal */
+  border-radius: 8px;
+  border: 1px solid #dfe3e8;
+  padding: 12px;
+  font-family: inherit;
+  resize: vertical; /* Permite aumentar apenas a altura, não a largura */
+  transition: border-color .2s ease, box-shadow .2s ease;
+  margin-top: 5px;
+}
+
+textarea[pInputTextarea]:focus {
+  outline: none;
+  border-color: #2c3e50;
+  box-shadow: 0 0 0 0.15rem rgba(44, 62, 80, 0.15);
+}
+
+/* Ajuste de espaçamento entre os campos do formulário */
+.p-field {
+  margin-bottom: 1.5rem;
+}

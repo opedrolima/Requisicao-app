@@ -64,10 +64,15 @@
       <ng-select [items]="departamentos$ | async" bindLabel="nome" formControlName="destino">
       </ng-select>
     </div>
-    <div class="p-field p-col-12 p-md-12">
-      <label for="descricao">Descricao*:</label>
-      <textarea rows="5" cols="30" pInputTextarea formControlName="descricao"></textarea>
-    </div>
+<div class="p-field p-fluid p-col-12">
+  <label for="descricao">Descricao*:</label>
+  <textarea 
+    rows="5" 
+    pInputTextarea 
+    formControlName="descricao" 
+    placeholder="Digite os detalhes da requisição...">
+  </textarea>
+</div>
   </form>
 
   <div *ngIf="form.controls['destino'].errors || form.controls['descricao'].errors" class="text-warning text-left ">

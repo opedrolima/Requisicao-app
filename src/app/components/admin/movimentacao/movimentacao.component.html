@@ -61,10 +61,10 @@
         {{requisicaoSelecionada?.solicitante.nome}}
       </div>
     </div>
-    <div class="p-field p-col-12 p-md-12">
-      <label for="solicitacao">Solicitação:</label>
-      <textarea rows="5" cols="30" disabled pInputTextarea [value]="requisicaoSelecionada?.descricao"></textarea>
-    </div>
+<div class="p-field p-col-12">
+    <label for="solicitacao">Solicitação:</label>
+    <textarea rows="4" disabled pInputTextarea [value]="requisicaoSelecionada?.descricao"></textarea>
+</div>
   </div>
   <form [formGroup]="form" class="p-fluid p-formgrid p-grid">
     <div class="p-field p-col-12 p-md-6">
@@ -72,10 +72,10 @@
       <ng-select [items]="listaStatus" formControlName="status">
       </ng-select>
     </div>
-    <div class="p-field p-col-12 p-md-12">
-      <label for="descricao">Descricao*:</label>
-      <textarea rows="5" cols="30" pInputTextarea formControlName="descricao"></textarea>
-    </div>
+<div class="p-field p-col-12">
+    <label for="descricao">Descricao*:</label>
+    <textarea rows="4" pInputTextarea formControlName="descricao" placeholder="Descreva a atualização..."></textarea>
+</div>
   </form>
   <div *ngIf="form.controls['status'].errors || form.controls['descricao'].errors" class="text-warning text-left ">
     *Preenchimento Obrigatório</div>

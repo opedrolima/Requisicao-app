@@ -1,121 +1,50 @@
+/* O container ocupa a tela toda e ignora o padding global */
 .login-wrapper {
-  min-height: 100vh;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
-
-
+  align-items: center;    /* Centraliza verticalmente o conteúdo flex */
+  justify-content: center; /* Centraliza horizontalmente o conteúdo flex */
+  background-color: #f4f6f9;
+  z-index: 1000;
+  overflow: hidden; /* Mata o scroll de vez */
 }
 
 /* Painel colorido atrás do login */
 .login-wrapper::before {
   content: "";
   position: absolute;
-  width: 920px;
-  height: 620px;
+  
+  /* Tamanho fixo mas adaptável */
+  width: 90vw;
+  max-width: 920px;
+  height: 85vh;
+  max-height: 600px; 
 
   background: linear-gradient(135deg, #2c3e50, #4ca1af);
-
   border-radius: 20px;
   z-index: 0;
-
   box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+
+  /* Centralização Matemática */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Isso move o centro do painel para o centro da tela */
 }
-/* Card */
+
+/* Card branco - Agora sem as classes de grid do Bootstrap */
 .login-card {
   position: relative;
   z-index: 1;
-
   border: none;
   border-radius: 14px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
-  padding: 20px;
   background: #fff;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Inputs mais suaves */
-.form-control {
-  border-radius: 8px;
-  padding: 10px 14px;
-  border: 1px solid #dfe3e8;
-
-  transition:
-    border-color .18s ease,
-    box-shadow .18s ease,
-    transform .12s ease;
-}
-
-/* Hover — quando passa o mouse */
-.form-control:hover {
-  border-color: #bfc7d1;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-  transform: translateY(-1px);
-}
-
-/* Foco — quando clica */
-.form-control:focus {
-  border-color: #2c3e50;
-  box-shadow: 0 0 0 0.18rem rgba(44, 62, 80, 0.15);
-  transform: translateY(-1px);
-}
-
-/* Botões */
-.btn {
-  padding: 10px;
-  border-radius: 8px;
-  font-weight: 600;
-
-  transition:
-    transform .12s ease,
-    box-shadow .12s ease,
-    filter .12s ease;
-}
-
-/* Hover */
-.btn:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.05);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.18);
-}
-.btn-outline-success {
-  transition:
-    background-color .35s ease,
-    border-color .35s ease,
-    color .35s ease,
-    transform .2s ease,
-    box-shadow .25s ease;
-}
-
-/* Hover mais suave */
-.btn-outline-success:hover {
-  background-color: #2ecc71;
-  border-color: #2ecc71;
-  color: #fff;
-
-  transform: translateY(-1px);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-}
-
-/* Clique */
-.btn-outline-success:active {
-  transform: translateY(0);
-  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-}
-/* Responsividade */
-@media (max-width: 576px) {
-  .login-wrapper::before {
-    width: 90%;
-    height: 380px;
-  }
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+  
+  padding: 35px;
+  width: 90%;
+  max-width: 400px; /* Mantém o tamanho da sua imagem original */
 }

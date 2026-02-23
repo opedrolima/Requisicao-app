@@ -126,3 +126,36 @@ p-dialog .p-dialog-header {
 p-dialog .p-dialog-content {
   padding: 2rem !important;
 }
+
+/* Faz a caixa de texto ocupar 100% da largura e remove o redimensionamento horizontal */
+textarea[pInputTextarea] {
+    width: 100% !important;
+    border-radius: 8px;
+    border: 1px solid #dfe3e8;
+    padding: 12px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical; /* Permite apenas aumentar a altura, não a largura */
+    transition: border-color .2s ease, box-shadow .2s ease;
+    margin-top: 5px;
+}
+
+/* Efeito de foco suave */
+textarea[pInputTextarea]:focus {
+    outline: none;
+    border-color: #2c3e50;
+    box-shadow: 0 0 0 0.15rem rgba(44, 62, 80, 0.15);
+}
+
+/* Garante que o campo desabilitado (Solicitação) também tenha boa aparência */
+textarea[pInputTextarea]:disabled {
+    background-color: #f8f9fa;
+    color: #6c757d;
+    cursor: not-allowed;
+    border-style: dashed;
+}
+
+/* Melhora o espaçamento dos grupos de campos dentro da modal */
+.p-field {
+    margin-bottom: 1.2rem;
+}
